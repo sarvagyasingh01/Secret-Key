@@ -45,11 +45,11 @@ const Navbar = (props) => {
             await axios.get(`${URL}/api/users/logout`, {
               withCredentials: true,
             });
-            navigate("/logout");
-            navigate(0);
+            // navigate("/logout");
+            // navigate(0);
             toast.success("Account deleted successfully!");
           } catch (error) {
-            toast.error(error.message);
+            toast.error(error.response.data.message)
           }
         } else {
           toast.info("Cancelled");
