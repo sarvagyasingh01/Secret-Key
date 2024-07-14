@@ -38,9 +38,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
+//"http://localhost:5173"
 app.use(
   cors({
-    origin: ["http://localhost:5173"],
+    origin: ["https://secret-key-frontend.vercel.app"],
     credentials:true,
   })
 );
