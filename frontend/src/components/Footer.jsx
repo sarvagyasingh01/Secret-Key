@@ -3,7 +3,7 @@ import React from 'react'
 const Footer = () => {
   return (
     <div className='bg-slate-800 text-white flex flex-col justify-center items-center bottom-0 w-full p-4'>
-        <p>Created by Savagya Singh</p>
+        <p>Created by Sarvagya Singh</p>
     </div>
   )
 }

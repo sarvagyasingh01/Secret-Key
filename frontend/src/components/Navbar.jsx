@@ -70,9 +70,11 @@ const Navbar = (props) => {
           <span className="text-blue-600">Key</span>
         </div>
         <div className="flex justify-items items-center gap-6 text-base ">
+          <a href="https://github.com/sarvagyasingh01">
           <button className="px-2 py-2 rounded-md" href="#">
             <img src="/github.svg" alt="Github" className="h-[44px] w-[44px]" />
           </button>
+          </a>
           {loggedIn && (
             <div className="relative">
               <button
