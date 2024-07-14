@@ -19,10 +19,6 @@ const Navbar = (props) => {
       await axios.get(`${URL}/api/users/logout`, {
         withCredentials: true,
       });
-      setTimeout(() => {
-        navigate("/logout");
-        navigate(0);
-      }, 100);
       // navigate("/logout");
       // navigate(0);
     } catch (error) {
