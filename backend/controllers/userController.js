@@ -45,8 +45,8 @@ const registerUser = asyncHandler(async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 86400),
-    secure: false,
-    sameSite: "Lax",
+    secure: true,
+    sameSite: "None",
     path: "/",
   });
 
@@ -90,8 +90,8 @@ const loginUser = asyncHandler(async (req, res) => {
   res.cookie("token", token, {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 86400 ),
-    secure: false,
-    sameSite: "Lax",
+    secure: true,
+    sameSite: "None",
     path: "/",
   });
 
