@@ -19,8 +19,12 @@ const Navbar = (props) => {
       await axios.get(`${URL}/api/users/logout`, {
         withCredentials: true,
       });
-      //navigate("/logout");
-      //navigate(0);
+      setTimeout(() => {
+        navigate("/logout");
+        navigate(0);
+      }, 100);
+      // navigate("/logout");
+      // navigate(0);
     } catch (error) {
       toast.error(error.response.data.message)
     }
