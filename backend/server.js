@@ -57,6 +57,10 @@ app.use('/auth', require('./routes/auth'));
 //Error Middleware
 app.use(errorHandler);
 
+app.get("/", (req, res) => {
+  res.send("Hello World");
+})
+
 const PORT = process.env.PORT || 5000;
 
 //Connect to DB ans start server
