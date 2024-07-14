@@ -20,7 +20,7 @@ const Navbar = (props) => {
         withCredentials: true,
       });
       //navigate("/logout");
-      navigate(0);
+      //navigate(0);
     } catch (error) {
       toast.error(error.response.data.message)
     }
