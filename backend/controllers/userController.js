@@ -86,10 +86,10 @@ const loginUser = asyncHandler(async (req, res) => {
   //Generate token
   const token = generateToken(user._id, user.googleUser);
 
-  // Send http only cookie 86400
+  // Send http only cookie
   res.cookie("token", token, {
     httpOnly: true,
-    expires: new Date(Date.now() + 1000 * 10 ),
+    expires: new Date(Date.now() + 1000 * 86400 ),
     secure: false,
     sameSite: "Lax",
     path: "/",
