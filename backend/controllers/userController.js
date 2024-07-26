@@ -6,7 +6,9 @@ const bcrypt = require("bcryptjs");
 
 //Generate Json Web Token
 const generateToken = (id, googleUser) => {
-  return jwt.sign({ id, googleUser }, process.env.JWT_SECRET, { expiresIn: "1d" });
+  return jwt.sign({ id, googleUser }, process.env.JWT_SECRET, {
+    expiresIn: "1d",
+  });
 };
 
 //Register User
@@ -39,7 +41,7 @@ const registerUser = asyncHandler(async (req, res) => {
   });
 
   //Create jwt token
-  const token = generateToken(user._id, user.googleUser)
+  const token = generateToken(user._id, user.googleUser);
 
   // Send http only cookie
   res.cookie("token", token, {
@@ -83,22 +85,22 @@ const loginUser = asyncHandler(async (req, res) => {
   //User exisits, check if password is correct
   const passwordIsCorrect = await bcrypt.compare(password, user.password);
 
-  //Generate token
-  const token = generateToken(user._id, user.googleUser);
-
-  // Send http only cookie
-  res.cookie("token", token, {
-    httpOnly: true,
-    expires: new Date(Date.now() + 1000 * 86400 ),
-    secure: true,
-    sameSite: "None",
-    path: "/",
-  });
-
   // req.session.userId = user._id;
 
   if (user && passwordIsCorrect) {
     const { username, email } = user;
+
+    //Generate token
+    const token = generateToken(user._id, user.googleUser);
+
+    // Send http only cookie
+    res.cookie("token", token, {
+      httpOnly: true,
+      expires: new Date(Date.now() + 1000 * 86400),
+      secure: true,
+      sameSite: "None",
+      path: "/",
+    });
 
     res.status(200).json({
       username,
@@ -112,19 +114,18 @@ const loginUser = asyncHandler(async (req, res) => {
 
 //Logout User
 const logoutUser = (req, res) => {
-    //Expire cookie
-    // res.cookie("token", " ", {
-    //   httpOnly: true,
-    //   expires: new Date(0),
-    //   sameSite: "Lax",
-    //   secure: false,
-    //   path: "/"
-    // });
+  //Expire cookie
+  res.cookie("token", " ", {
+    httpOnly: true,
+    expires: new Date(0),
+    sameSite: "None",
+    secure: true,
+    path: "/"
+  });
 
-    //Clear cookie
-    // res.clearCookie("token");
-    res.clearCookie('token', { path: '/', secure: true, sameSite: 'None' });
-    res.status(200).json({ message: "Successfully Logged Out" });
+  //Clear cookie
+  res.clearCookie("token");
+  res.status(200).json({ message: "Successfully Logged Out" });
 
   // try {
   //   req.session.destroy;
@@ -182,10 +183,10 @@ const loginStatus = asyncHandler(async (req, res) => {
 });
 
 const deleteUser = asyncHandler(async (req, res) => {
-  const id = req.user.id
-  await User.findByIdAndDelete({_id:id})
-  res.status(201).json({message: "User deleted successfully"})
-})
+  const id = req.user.id;
+  await User.findByIdAndDelete({ _id: id });
+  res.status(201).json({ message: "User deleted successfully" });
+});
 
 module.exports = {
   registerUser,
