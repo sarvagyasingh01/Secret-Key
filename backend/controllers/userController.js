@@ -46,7 +46,7 @@ const registerUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 86400),
     secure: true,
-    sameSite: "Strict",
+    sameSite: "None",
     path: "/",
   });
 
@@ -91,7 +91,7 @@ const loginUser = asyncHandler(async (req, res) => {
     httpOnly: true,
     expires: new Date(Date.now() + 1000 * 86400 ),
     secure: true,
-    sameSite: "Strict",
+    sameSite: "None",
     path: "/",
   });
 
@@ -123,7 +123,7 @@ const logoutUser = (req, res) => {
 
     //Clear cookie
     // res.clearCookie("token");
-    res.clearCookie('token', { path: '/', secure: true, sameSite: 'Strict' });
+    res.clearCookie('token', { path: '/', secure: true, sameSite: 'None' });
     res.status(200).json({ message: "Successfully Logged Out" });
 
   // try {
