@@ -117,7 +117,7 @@ const logoutUser = (req, res) => {
   //Expire cookie
   res.cookie("token", " ", {
     httpOnly: true,
-    expires: new Date(0),
+    expires: new Date(Date.now() + 1000),
     sameSite: "None",
     secure: true,
     path: "/"
