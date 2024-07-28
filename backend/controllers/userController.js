@@ -95,12 +95,12 @@ const loginUser = asyncHandler(async (req, res) => {
 
     // Send http only cookie
     res.cookie("token", token, {
-      domain: ".secret-key-frontend.vercel.app",
       httpOnly: true,
       expires: new Date(Date.now() + 1000 * 86400),
       secure: true,
       sameSite: "None",
       path: "/",
+      domain: ".secret-key-frontend.vercel.app",
     });
 
     res.status(200).json({
