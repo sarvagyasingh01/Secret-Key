@@ -123,8 +123,13 @@ const logoutUser = (req, res) => {
   //   path: "/"
   // });
 
+  res.setHeader(
+    "Set-Cookie",
+    "token=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
+  );
+
   //Clear cookie
-  res.clearCookie("token");
+  // res.clearCookie("token");
   res.status(200).json({ message: "Successfully Logged Out" });
 
   // try {
