@@ -114,28 +114,26 @@ const loginUser = asyncHandler(async (req, res) => {
 
 //Logout User
 const logoutUser = (req, res) => {
-  //Expire cookie
-  res.cookie("token", " ", {
-    httpOnly: true,
-    expires: new Date(0),
-    sameSite: "None",
-    secure: true,
-    path: "/"
-  });
+  try {
+    //Expire cookie
+  //   res.cookie("token", " ", {
+  //   httpOnly: true,
+  //   expires: new Date(0),
+  //   sameSite: "None",
+  //   secure: true,
+  //   path: "/"
+  // });
 
 
   //Clear cookie
-  // res.clearCookie("token");
+  res.clearCookie("token");
   res.status(200).json({ message: "Successfully Logged Out" });
+  } catch (error) {
+    console.log(error.message)
+  }
+  
 
-  // try {
-  //   req.session.destroy;
-  //   res.clearCookie("connect.sig");
-  //   res.status(200).json({ message: "User logged out successfully" });
-  // } catch (error) {
-  //   res.status(401);
-  //   throw new Error("Log Out Unsuccessfull");
-  // }
+
 };
 
 //Get User Data
