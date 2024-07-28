@@ -129,7 +129,8 @@ const logoutUser = (req, res) => {
   res.clearCookie("token");
   res.status(200).json({ message: "Successfully Logged Out" });
   } catch (error) {
-    console.log(error.message)
+    res.status(400)
+    throw new Error(error.message)
   }
   
 
