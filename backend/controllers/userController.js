@@ -115,18 +115,14 @@ const loginUser = asyncHandler(async (req, res) => {
 //Logout User
 const logoutUser = (req, res) => {
   //Expire cookie
-  // res.cookie("token", " ", {
-  //   httpOnly: true,
-  //   expires: new Date(Date.now() + 1000),
-  //   sameSite: "None",
-  //   secure: true,
-  //   path: "/"
-  // });
+  res.cookie("token", " ", {
+    httpOnly: true,
+    expires: new Date(0),
+    sameSite: "None",
+    secure: true,
+    path: "/"
+  });
 
-  res.setHeader(
-    "Set-Cookie",
-    "token=deleted; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT"
-  );
 
   //Clear cookie
   // res.clearCookie("token");
