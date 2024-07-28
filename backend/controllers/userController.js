@@ -99,6 +99,7 @@ const loginUser = asyncHandler(async (req, res) => {
       expires: new Date(Date.now() + 1000 * 86400),
       secure: true,
       sameSite: "None",
+      domain:".vercel.app",
       path: "/",
     });
 
