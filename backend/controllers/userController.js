@@ -125,7 +125,7 @@ const logoutUser = (req, res) => {
 
   //Clear cookie
   res.clearCookie("token");
-  // res.status(200).json({ message: "Successfully Logged Out" });
+  res.status(200).json({ message: "Successfully Logged Out" });
 
   // try {
   //   req.session.destroy;
