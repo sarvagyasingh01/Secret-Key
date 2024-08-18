@@ -29,7 +29,8 @@ router.get("/google/callback", passport.authenticate("google"), (req, res) => {
     sameSite: "Lax",
     path: "/",
   });
-  res.redirect("http://localhost:5173/");
+  // "http://localhost:5173/"
+  res.redirect(`${AUTH_REDIRECT_URL}`);
 });
 
 router.get("/logout",(req, res) => {
